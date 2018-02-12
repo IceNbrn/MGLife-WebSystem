@@ -14,16 +14,25 @@ if($diretory == "/mgrp/system/gnr"){
     $loginDirectory = "../../login.php";
     $patrulhaGNRDirectory = "index.php";
     $logoutDirectory = "../../logout.php";
-}elseif("/mgrp") {
+    $logoDirectory = "../../images/mgrplogo.png";
+}elseif($diretory == "/mgrp") {
     $indexDiretory = "index.php";
     $loginDirectory = "login.php";
     $logoutDirectory = "logout.php";
     $patrulhaGNRDirectory = "system/gnr/index.php";
+    $logoDirectory = "images/mgrplogo.png";
+}elseif($diretory == "/mgrp/system/admin"){
+    $indexDiretory = "../../index.php";
+    $loginDirectory = "../../login.php";
+    $patrulhaGNRDirectory = "index.php";
+    $logoutDirectory = "../../logout.php";
+    $logoDirectory = "../../images/mgrplogo.png";
 }else{
     $indexDiretory = "index.php";
     $loginDirectory = "login.php";
     $patrulhaGNRDirectory = "system/gnr/index.php";
     $logoutDirectory = "logout.php";
+    $logoDirectory = "images/mgrplogo.png";
     echo $diretory;
 }
 ?>
@@ -31,22 +40,26 @@ if($diretory == "/mgrp/system/gnr"){
    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
+          <img src="<?=$logoDirectory?>" width="32px" height="32px">
         <a class="navbar-brand" href="<?=$indexDiretory?>">MGLife System</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                GNR Dashboard
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="<?=$patrulhaGNRDirectory?>">Patrulha</a>
-                <a class="dropdown-item" href="#">Report</a>
-                <!--<a class="dropdown-item" href="#">Something else here</a>-->
+          <?php
+          if(isset($_SESSION["userId"])){?>
+              <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      GNR Dashboard
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="<?=$patrulhaGNRDirectory?>">Patrulha</a>
+                      <a class="dropdown-item" href="#">Report</a>
+                      <!--<a class="dropdown-item" href="#">Something else here</a>-->
+                  </div>
               </div>
-            </div>
+          <?php }?>
             <li class="nav-item active">
               <a class="nav-link" href="index.php">Home</a>
             </li>
@@ -69,9 +82,7 @@ if($diretory == "/mgrp/system/gnr"){
                   <!--<a class="dropdown-item" href="#">Something else here</a>-->
               </div>
           </div>
-            <li class="nav-item">
 
-            </li>
           </ul>
         </div>
       </div>

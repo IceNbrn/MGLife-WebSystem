@@ -208,27 +208,15 @@
       <Position>3</Position>
       <DataType>varchar(500)|0</DataType>
     </column>
-    <column id="56" parent="18" name="cop_level">
+    <column id="56" parent="18" name="deleted">
       <Position>4</Position>
-      <DataType>tinyint(4)|0</DataType>
-    </column>
-    <column id="57" parent="18" name="med_level">
-      <Position>5</Position>
-      <DataType>tinyint(4)|0</DataType>
-    </column>
-    <column id="58" parent="18" name="admin_level">
-      <Position>6</Position>
-      <DataType>tinyint(4)|0</DataType>
-    </column>
-    <column id="59" parent="18" name="code">
-      <Position>7</Position>
-      <DataType>varchar(100)|0</DataType>
-    </column>
-    <column id="60" parent="18" name="deleted">
-      <Position>8</Position>
       <DataType>tinyint(1)|0</DataType>
     </column>
-    <key id="61" parent="18" name="PRIMARY">
+    <column id="57" parent="18" name="steamid">
+      <Position>5</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <key id="58" parent="18" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

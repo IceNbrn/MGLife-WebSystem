@@ -26,6 +26,7 @@ class users extends database{
     }
 
     public function Login($username,$password){
+        $password = sha1(md5($password));
         $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
 
         $result = $this->query($sql);
@@ -43,6 +44,18 @@ class users extends database{
                 header("Location: index.php");
             }
         }
+    }
+    public function CreateUser($username,$password,$steamid){
+        $sql = "INSERT INTO users (username,password,deleted,steamid) VALUES ('$username','$password',0,'$steamid')";
+        $this->query($sql);
+        //echo $sql;
+        echo  '<script> swal("Adicionado", "Utilizador criado com sucesso!", "success")</script>';
+    }
+    public function EditUser($userid,$newusername,$newpassword,$newsteamid,$deleted){
+        $sql = "UPDATE users SET username = '$newusername', password = '$newpassword', steamid = '$newsteamid', deleted = '$deleted' WHERE id = $userid";
+        $this->query($sql);
+        //echo $sql;
+        echo  '<script> swal("Sucesso", "Utilizador editado com sucesso!", "success")</script>';
     }
     public function GetUsernameSession($id){
         echo $this->GetUsername($id);
