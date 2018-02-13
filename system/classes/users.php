@@ -10,7 +10,6 @@ require_once "database.php";
 
 class users extends database{
 
-    protected static $connection;
 
     public function GetUsername($id) : string {
         $sql = "SELECT * FROM users WHERE id = $id";
@@ -56,6 +55,30 @@ class users extends database{
         $this->query($sql);
         //echo $sql;
         echo  '<script> swal("Sucesso", "Utilizador editado com sucesso!", "success")</script>';
+    }
+    public function GetCopLvl($steamid){
+        $sql = "SELECT * FROM players WHERE pid = $steamid";
+        $result = $this->query($sql);
+
+        $num_rows = $result->num_rows;
+        if($num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+                return $row["coplevel"];
+            }
+        }
+        return 0;
+    }
+    public function GetUserSteamid($id){
+        $sql = "SELECT * FROM users WHERE id = $id";
+        $result = $this->query($sql);
+
+        $num_rows = $result->num_rows;
+        if($num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+                return $row["steamid"];
+            }
+        }
+        return 0;
     }
     public function GetUsernameSession($id){
         echo $this->GetUsername($id);

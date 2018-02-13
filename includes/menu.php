@@ -7,6 +7,7 @@
  */
 //require_once ("../system/classes/users.php");
 $users = new users();
+
 $filename = basename($_SERVER["PHP_SELF"]);
 $diretory = str_replace("/".$filename,"",str_replace("/OpenYourGame/","",$_SERVER["PHP_SELF"]));
 if($diretory == "/mgrp/system/gnr"){
@@ -15,24 +16,32 @@ if($diretory == "/mgrp/system/gnr"){
     $patrulhaGNRDirectory = "index.php";
     $logoutDirectory = "../../logout.php";
     $logoDirectory = "../../images/mgrplogo.png";
+    $adminPainelDirectory = "../admin/painel.php";
+    $createPatrulhaDirectory = "../admin/CreateZona.php";
 }elseif($diretory == "/mgrp") {
     $indexDiretory = "index.php";
     $loginDirectory = "login.php";
     $logoutDirectory = "logout.php";
     $patrulhaGNRDirectory = "system/gnr/index.php";
     $logoDirectory = "images/mgrplogo.png";
+    $adminPainelDirectory = "system/admin/painel.php";
+    $createPatrulhaDirectory = "system/admin/CreateZona.php";
 }elseif($diretory == "/mgrp/system/admin"){
     $indexDiretory = "../../index.php";
     $loginDirectory = "../../login.php";
-    $patrulhaGNRDirectory = "index.php";
+    $patrulhaGNRDirectory = "../gnr/index.php";
     $logoutDirectory = "../../logout.php";
     $logoDirectory = "../../images/mgrplogo.png";
+    $adminPainelDirectory = "painel.php";
+    $createPatrulhaDirectory = "CreateZona.php";
 }else{
     $indexDiretory = "index.php";
     $loginDirectory = "login.php";
     $patrulhaGNRDirectory = "system/gnr/index.php";
     $logoutDirectory = "logout.php";
     $logoDirectory = "images/mgrplogo.png";
+    $adminPainelDirectory = "system/admin/painel.php";
+    $createPatrulhaDirectory = "system/admin/CreateZona.php";
     echo $diretory;
 }
 ?>
@@ -49,13 +58,27 @@ if($diretory == "/mgrp/system/gnr"){
           <ul class="navbar-nav ml-auto">
           <?php
           if(isset($_SESSION["userId"])){?>
+              <?php if($users->GetCopLvl($users->GetUserSteamid($_SESSION["userId"])) > 0){ ?>
               <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       GNR Dashboard
                   </button>
+
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item" href="<?=$patrulhaGNRDirectory?>">Patrulha</a>
                       <a class="dropdown-item" href="#">Report</a>
+                      <!--<a class="dropdown-item" href="#">Something else here</a>-->
+                  </div>
+              </div>
+              <?php }?>
+              &nbsp
+              <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Admin Dashboard
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="<?=$adminPainelDirectory?>">Painel</a>
+                      <a class="dropdown-item" href="<?=$createPatrulhaDirectory?>">Nova Patrulha</a>
                       <!--<a class="dropdown-item" href="#">Something else here</a>-->
                   </div>
               </div>

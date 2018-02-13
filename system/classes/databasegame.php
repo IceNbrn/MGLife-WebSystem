@@ -5,7 +5,7 @@
  * Date: 11/02/2018
  * Time: 21:17
  */
-class Database {
+class DatabaseGame {
     // The database connection
     protected static $connection;
     /**

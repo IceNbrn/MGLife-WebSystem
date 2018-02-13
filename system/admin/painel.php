@@ -42,34 +42,38 @@ $users = new users();
 <div class="row">
     <div class="container">
         <h2>Users</h2>
-        <p>The .table-hover class adds a hover effect (grey background color) on table rows:</p>
+        <p>A tabela abaixo mostra os utilizadores do site que já entraram no servidor!</p>
         <table class="table table-dark table-hover">
             <thead>
             <tr>
-                <th>Nome</th>
-                <th>Patente</th>
-                <th>Status</th>
+                <th class="col-md-1">ID</th>
+                <th class="col-md-6">Nome</th>
+                <th class="col-md-1">Deleted</th>
+                <th class="col-md-2">Opções</th>
             </tr>
             </thead>
             <tbody>
+            <?php
+            $sql = "SELECT * FROM users,players WHERE users.steamid = players.pid";
+            $users_result = $users->query($sql);
+            $users_result_num_rows = $users_result->num_rows;
+            if($users_result_num_rows > 0){
+                while ($row = $users_result->fetch_assoc()){
+                    $userID = $row["id"];
+                    $username = $row["username"];
+                    $deleted = $row["deleted"];
+            ?>
             <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
+
+                <td><?= $userID?></td>
+                <td><?= $username?></td>
+                <td><?= $deleted?></td>
+                <th><a class="btn btn-secondary" href="EditUser.php?id=<?=$userID?>" target="_blank">Editar um utilizador</a></th>
             </tr>
-            <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
-            </tr>
+            <?php }}?>
             </tbody>
         </table>
-        <a class="btn btn-secondary" href="EditUser.php">Editar um utilizador</a>
+
         <a class="btn btn-success" href="CreateUser.php">Criar um utilizador</a>
 
 

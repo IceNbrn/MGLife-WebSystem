@@ -11,5 +11,15 @@
       <user-name>root</user-name>
       <introspection-schemas>*:discord,mgrp</introspection-schemas>
     </data-source>
+    <data-source name="ni1100568_2_DB@ukln004.nitrado.net" uuid="3c49b009-140d-455b-a823-44438b14f6fb">
+      <database-info product="MySQL" version="5.7.20" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.45 ( Revision: 9131eefa398531c7dc98776e8a3fe839e544c5b2 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>ni1100568_2_DB</user-name>
+      <introspection-schemas>*:ni1100568_2_DB</introspection-schemas>
+    </data-source>
   </component>
 </project>
