@@ -18,6 +18,7 @@ if($diretory == "/mgrp/system/gnr"){
     $logoDirectory = "../../images/mgrplogo.png";
     $adminPainelDirectory = "../admin/painel.php";
     $createPatrulhaDirectory = "../admin/CreateZona.php";
+    $irpatrulhaDirectory = "patrulhar.php";
 }elseif($diretory == "/mgrp") {
     $indexDiretory = "index.php";
     $loginDirectory = "login.php";
@@ -26,6 +27,7 @@ if($diretory == "/mgrp/system/gnr"){
     $logoDirectory = "images/mgrplogo.png";
     $adminPainelDirectory = "system/admin/painel.php";
     $createPatrulhaDirectory = "system/admin/CreateZona.php";
+    $irpatrulhaDirectory = "system/gnr/patrulhar.php";
 }elseif($diretory == "/mgrp/system/admin"){
     $indexDiretory = "../../index.php";
     $loginDirectory = "../../login.php";
@@ -34,6 +36,7 @@ if($diretory == "/mgrp/system/gnr"){
     $logoDirectory = "../../images/mgrplogo.png";
     $adminPainelDirectory = "painel.php";
     $createPatrulhaDirectory = "CreateZona.php";
+    $irpatrulhaDirectory = "../gnr/patrulhar.php";
 }else{
     $indexDiretory = "index.php";
     $loginDirectory = "login.php";
@@ -42,6 +45,7 @@ if($diretory == "/mgrp/system/gnr"){
     $logoDirectory = "images/mgrplogo.png";
     $adminPainelDirectory = "system/admin/painel.php";
     $createPatrulhaDirectory = "system/admin/CreateZona.php";
+    $irpatrulhaDirectory = "system/gnr/patrulhar.php";
     echo $diretory;
 }
 ?>
@@ -63,9 +67,9 @@ if($diretory == "/mgrp/system/gnr"){
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       GNR Dashboard
                   </button>
-
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="<?=$patrulhaGNRDirectory?>">Patrulha</a>
+                      <a class="dropdown-item" href="<?=$irpatrulhaDirectory?>">Patrulhar</a>
+                      <a class="dropdown-item" href="<?=$patrulhaGNRDirectory?>">Patrulhas</a>
                       <a class="dropdown-item" href="#">Report</a>
                       <!--<a class="dropdown-item" href="#">Something else here</a>-->
                   </div>

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt">
 <?php
+
 ob_start();
 session_start();
+require_once ("../../system/classes/patrulha.php");
 require_once ("../../system/classes/users.php");
 $users = new users();
+$patrulha = new patrulha();
+
+
 ?>
 
 <head>
@@ -45,27 +50,46 @@ $users = new users();
     <table class="table table-dark table-hover">
         <thead>
         <tr>
-            <th>Nome</th>
-            <th>Patente</th>
-            <th>Status</th>
+            <th class="col-md-1">ID</th>
+            <th class="col-md-2">Polícia nº1</th>
+            <th class="col-md-2">Polícia nº2</th>
+            <th class="col-md-3">Zona</th>
+            <th class="col-md-1">Estado</th>
+            <th class="col-md-4">Ultima Modificação</th>
+            <th class="col-md-2">Opções</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-        </tr>
-        <tr>
-            <td>Mary</td>
-            <td>Moe</td>
-            <td>mary@example.com</td>
-        </tr>
-        <tr>
-            <td>July</td>
-            <td>Dooley</td>
-            <td>july@example.com</td>
-        </tr>
+        <?php
+        $sql = "SELECT * FROM patrulhas ORDER BY last_modification DESC";
+        $users_result = $users->query($sql);
+        $users_result_num_rows = $users_result->num_rows;
+        if($users_result_num_rows > 0){
+            while ($row = $users_result->fetch_assoc()){
+                $patrulhaID = $row["id"];
+                $policia1 = $row["policia"];
+                $policia2 = $row["policia2"];
+                $zona = $patrulha->GetZona($row["zona"]);
+                if($row["status"] == 0)
+                    $estado = "Inativa";
+                else
+                    $estado = "Ativa";
+
+                $ultima_modificacao = $row["last_modification"];
+                ?>
+                <tr>
+
+                    <td><?= $patrulhaID?></td>
+                    <td><?= $policia1?></td>
+                    <td><?= $policia2?></td>
+                    <td><?= $zona?></td>
+                    <td <?=$patrulha->SetColor($estado);?> ><?= $estado?></td>
+                    <td><?= $ultima_modificacao?></td>
+                    <th><a class="btn btn-secondary" href="EditUser.php?id=<?=$patrulhaID?>" target="_blank">Atualizar Patrulha</a></th>
+                </tr>
+            <?php }}else{
+            echo "Nenhuma patrulha adicionada!";
+        }?>
         </tbody>
     </table>
 </div>
