@@ -14,7 +14,7 @@ $users = new users();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Bare - Start Bootstrap Template</title>
+    <title>MGRP | Home</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -43,11 +43,17 @@ $users = new users();
       <div class="row">
         <div class="col-lg-12 text-center">
           <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
-          <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
-          <ul class="list-unstyled">
-            <li>Bootstrap 4.0.0</li>
-            <li>jQuery 3.3.0</li>
-          </ul>
+          <?php
+          $myString = "A1";
+          if (preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $myString))
+          {
+              if(preg_match('/[A-Z]/', $myString)){
+                  echo 'Secure enough';
+              }
+          }else{
+              echo 'NOT Secure enough';
+          }
+          ?>
         </div>
       </div>
     </div>

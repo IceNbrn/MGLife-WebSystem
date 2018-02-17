@@ -48,6 +48,15 @@ class patrulha extends database{
         }
         return "";
     }
+    public function SairDaPatrulha($idPatrulha,$policia){
+        $sql = "UPDATE patrulhas SET policia2 = '---' WHERE id = '$idPatrulha' AND policia2 = '$policia'";
+        $this->query($sql);
+        echo  "<script>
+        swal('Saiste da patrulha com sucesso!').then((value) => {
+            location.href = 'index.php';
+        });
+        </script>";
+    }
     public function SetColor($value){
         if($value == "Ativa"){
             echo 'style="color: #42d600"';

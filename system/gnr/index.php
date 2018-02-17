@@ -9,7 +9,7 @@ require_once ("../../system/classes/users.php");
 $users = new users();
 $patrulha = new patrulha();
 
-
+$userIdLogado = $_SESSION["userId"];
 ?>
 
 <head>
@@ -85,7 +85,7 @@ $patrulha = new patrulha();
                     <td><?= $zona?></td>
                     <td <?=$patrulha->SetColor($estado);?> ><?= $estado?></td>
                     <td><?= $ultima_modificacao?></td>
-                    <th><a class="btn btn-secondary" href="EditUser.php?id=<?=$patrulhaID?>" target="_blank">Atualizar Patrulha</a></th>
+                    <th><a class="btn btn-secondary" href="EditUser.php?id=<?=$patrulhaID?>" target="_blank">Atualizar Patrulha</a><?php if($users->GetUsername($userIdLogado) == $policia2){?>&nbsp<br/><a class="btn btn-danger" href="sairp.php?id=<?=$patrulhaID?>">Sair da Patrulha</a><?php }?></th>
                 </tr>
             <?php }}else{
             echo "Nenhuma patrulha adicionada!";

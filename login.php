@@ -68,7 +68,7 @@ $users = new users();
                                         <input type="password" class="form-control form-control-lg rounded-0" id="pwd1" autocomplete="new-password" name="lb_password" id="lb_password">
                                     </div>
                                     <button type="submit" name="btnlogin" class="btn btn-success btn-lg float-right">Login</button>
-
+                                    <a href="register.php">Registar</a>
                                 <?php
                                 if(isset($_POST["btnlogin"])){
                                     if(empty($_POST["lb_username"])){

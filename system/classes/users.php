@@ -42,7 +42,34 @@ class users extends database{
 
                 header("Location: index.php");
             }
+        }else{
+            echo  '<script> swal("Erro", "O username ou password estão incorretos!", "error")</script>';
         }
+    }
+    public function Register($steamid,$password){
+        $sql0 = "SELECT * FROM users WHERE $steamid = '$steamid'";
+        $result = $this->query($sql0);
+        $num_rows = $result->num_rows;
+        if($num_rows == 0){
+            $sqlgame = "SELECT * FROM players WHERE pid = '$steamid'";
+            $resultgame = $this->query($sqlgame);
+            $num_rowsgame = $resultgame->num_rows;
+            if($num_rowsgame > 0){
+                $userData = $result->fetch_array();
+                $username = $userData["name"];
+                $sql = "INSERT INTO users (username,password,deleted,steamid) VALUES ('$username','$password',0,'$steamid')";
+                $this->query($sql);
+                //echo $sql;
+                echo  '<script> swal("Sucesso", "Utilizador registado com sucesso!", "success")</script>';
+            }else{
+                echo "<script>swal('Erro', 'Tens de entrar no servidor primeiro antes de registares no site!', 'error');</script>";
+            }
+
+
+        }else{
+            echo "<script>swal('Erro', 'Esse steamid já está a ser utilizado por alguém!', 'error');</script>";
+        }
+
     }
     public function CreateUser($username,$password,$steamid){
         $sql = "INSERT INTO users (username,password,deleted,steamid) VALUES ('$username','$password',0,'$steamid')";
