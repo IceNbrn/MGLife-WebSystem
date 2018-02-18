@@ -24,7 +24,7 @@ class patrulha extends database{
         //echo $sql;
         echo  '<script> swal("Criada", "Nova patrulha adicionada com sucesso!", "success")</script>';
     }
-    public function PatrulhaExists($policia1,$policia2) : bool {
+    public function PatrulhaExists($policia1,$policia2,$zona,$status) : bool {
         $sql = "SELECT * FROM patrulhas WHERE policia = '$policia1' OR policia2 = '$policia1' OR policia2 = '$policia2' OR policia = '$policia1'";
         $result = $this->query($sql);
 
@@ -35,6 +35,46 @@ class patrulha extends database{
         }
         return false;
     }
+    public function PoliciasNumaZona($zona) : int{
+        $sql = "SELECT COUNT(zona) as npolicias FROM patrulhas WHERE zona = '$zona' AND status = 1";
+        $result = $this->query($sql);
+        $num_rows = $result->num_rows;
+        if($num_rows > 0){
+            $data = $result->fetch_assoc();
+            return $data["npolicias"];
+        }
+        return 0;
+    }
+    public function UpdatePatrulha($idPatrulha,$policia1,$policia2,$zona,$status){
+        $policiasnumazona = $this->PoliciasNumaZona($zona);
+        if($policia2 != "---"){
+            $sql = "SELECT * FROM patrulhas WHERE policia = '$policia2' OR policia2 = '$policia2'";
+            $result = $this->query($sql);
+            $num_rows = $result->num_rows;
+
+            if($num_rows > 0){
+                echo  '<script> swal("Patrulha", "O policia nº2 já está numa patrulha!", "error")</script>';
+            }else{
+                if($policiasnumazona < 2) {
+                    $sql = "UPDATE patrulhas SET policia2 = '$policia2', status = '$status', zona = '$zona',last_modification = current_timestamp() WHERE id = $idPatrulha";
+                    $this->query($sql);
+                    echo  '<script> swal("Patrulha", "Patrulha atualizada com sucesso!", "success")</script>';
+                }else{
+                    echo  '<script> swal("Patrulha", "Já existe policias suficientes nessa zona!", "error")</script>';
+                }
+            }
+        }else{
+            if($policiasnumazona < 2){
+                $sql1 = "UPDATE patrulhas SET status = '$status', zona = '$zona',last_modification = current_timestamp() WHERE id = $idPatrulha";
+                $this->query($sql1);
+                echo  '<script> swal("Patrulha", "Patrulha atualizada com sucesso!", "success")</script>';
+            }else{
+                echo  '<script> swal("Patrulha", "Já existe policias suficientes nessa zona!", "error")</script>';
+            }
+        }
+
+    }
+
     public function GetZona($id) : string {
         $sql = "SELECT * FROM listapatrulhas WHERE id = '$id'";
         $result = $this->query($sql);

@@ -44,15 +44,7 @@ $users = new users();
         <div class="col-lg-12 text-center">
           <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
           <?php
-          $myString = "A1";
-          if (preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $myString))
-          {
-              if(preg_match('/[A-Z]/', $myString)){
-                  echo 'Secure enough';
-              }
-          }else{
-              echo 'NOT Secure enough';
-          }
+          echo memory_get_usage();
           ?>
         </div>
       </div>

@@ -79,13 +79,13 @@ $userIdLogado = $_SESSION["userId"];
                 ?>
                 <tr>
 
-                    <td><?= $patrulhaID?></td>
+                    <td>33-<?= $patrulhaID?></td>
                     <td><?= $policia1?></td>
                     <td><?= $policia2?></td>
                     <td><?= $zona?></td>
                     <td <?=$patrulha->SetColor($estado);?> ><?= $estado?></td>
                     <td><?= $ultima_modificacao?></td>
-                    <th><a class="btn btn-secondary" href="EditUser.php?id=<?=$patrulhaID?>" target="_blank">Atualizar Patrulha</a><?php if($users->GetUsername($userIdLogado) == $policia2){?>&nbsp<br/><a class="btn btn-danger" href="sairp.php?id=<?=$patrulhaID?>">Sair da Patrulha</a><?php }?></th>
+                    <th><?php if($users->GetUsername($userIdLogado) == $policia1 ){?><a class="btn btn-secondary" href="atualizarp.php?id=<?=$patrulhaID?>" target="_blank">Atualizar Patrulha</a><?php }if($users->GetUsername($userIdLogado) == $policia2){?>&nbsp<br/><a class="btn btn-danger" href="sairp.php?id=<?=$patrulhaID?>">Sair da Patrulha</a><?php }?></th>
                 </tr>
             <?php }}else{
             echo "Nenhuma patrulha adicionada!";
