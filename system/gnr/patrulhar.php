@@ -20,6 +20,7 @@ $patrulha = new patrulha();
 
     <!-- Bootstrap core CSS -->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/home.css" rel="stylesheet">
     <script src="../../js/sweetalert.min.js"></script>
     <!-- Custom styles for this template -->
     <style>

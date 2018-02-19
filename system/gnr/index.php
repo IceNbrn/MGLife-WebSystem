@@ -23,7 +23,7 @@ $userIdLogado = $_SESSION["userId"];
 
     <!-- Bootstrap core CSS -->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="../../css/home.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <style>
         body {

@@ -17,6 +17,7 @@ $patrulha = new patrulha();
 <html>
 <head>
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/home.css" rel="stylesheet">
     <script src="../../js/sweetalert.min.js"></script>
 </head>
     <body>

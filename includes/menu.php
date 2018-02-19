@@ -64,7 +64,7 @@ if($diretory == "/mgrp/system/gnr"){
           if(isset($_SESSION["userId"])){?>
               <?php if($users->GetCopLvl($users->GetUserSteamid($_SESSION["userId"])) > 0){ ?>
               <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       GNR Dashboard
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -77,7 +77,7 @@ if($diretory == "/mgrp/system/gnr"){
               <?php }?>
               &nbsp
               <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="btn btn-basic dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Admin Dashboard
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
