@@ -47,7 +47,7 @@ $patrulha = new patrulha();
     <p>The .table-hover class adds a hover effect (grey background color) on table rows:</p>
     <div class="card rounded-0">
         <div class="card-header">
-            <h3 class="mb-0">COP System</h3>
+            <h3 class="mb-0">Patrulhar</h3>
         </div>
         <div class="card-body">
             <form class="form" role="form" autocomplete="off" id="formLogin" method="post" action="patrulhar.php">
@@ -106,10 +106,7 @@ $patrulha = new patrulha();
                         $sl_zona = $users->quote($_POST["sl_zona"]);
                         $sl_status = $users->quote($_POST["sl_status"]);
 
-                        if(!$patrulha->PatrulhaExists($policia_1,$policia_2))
-                            $patrulha->NewPatrulha($policia_1,$policia_2,$sl_zona,$sl_status);
-                        else
-                            echo  '<script> swal("Erro", "Um dos policias adicionados já estão noutra patrulha!", "error")</script>';
+                        $patrulha->AddPatrulha($policia_1,$policia_2,$sl_zona,$sl_status);
                     }
                 }
                 ?>

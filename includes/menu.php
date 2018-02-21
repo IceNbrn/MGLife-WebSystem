@@ -13,39 +13,61 @@ $diretory = str_replace("/".$filename,"",str_replace("/OpenYourGame/","",$_SERVE
 if($diretory == "/mgrp/system/gnr"){
     $indexDiretory = "../../index.php";
     $loginDirectory = "../../login.php";
-    $patrulhaGNRDirectory = "index.php";
+
     $logoutDirectory = "../../logout.php";
     $logoDirectory = "../../images/mgrplogo.png";
+    //ADMIN
     $adminPainelDirectory = "../admin/painel.php";
     $createPatrulhaDirectory = "../admin/CreateZona.php";
+    //GNR
+    $patrulhaGNRDirectory = "index.php";
     $irpatrulhaDirectory = "patrulhar.php";
+    $reportpGNRDirectory = "fugitivos.php";
+    $reportvGNRDirectory = "veiculos.php";
 }elseif($diretory == "/mgrp") {
+    //HOME
     $indexDiretory = "index.php";
     $loginDirectory = "login.php";
     $logoutDirectory = "logout.php";
-    $patrulhaGNRDirectory = "system/gnr/index.php";
+
     $logoDirectory = "images/mgrplogo.png";
+    //ADMIN
     $adminPainelDirectory = "system/admin/painel.php";
     $createPatrulhaDirectory = "system/admin/CreateZona.php";
+    //GNR
+    $reportpGNRDirectory = "system/gnr/fugitivos.php";
+    $reportvGNRDirectory = "system/gnr/veiculos.php";
     $irpatrulhaDirectory = "system/gnr/patrulhar.php";
+    $patrulhaGNRDirectory = "system/gnr/index.php";
 }elseif($diretory == "/mgrp/system/admin"){
-    $indexDiretory = "../../index.php";
-    $loginDirectory = "../../login.php";
-    $patrulhaGNRDirectory = "../gnr/index.php";
-    $logoutDirectory = "../../logout.php";
-    $logoDirectory = "../../images/mgrplogo.png";
+    //ADMIN
     $adminPainelDirectory = "painel.php";
     $createPatrulhaDirectory = "CreateZona.php";
+    //HOME
+    $indexDiretory = "../../index.php";
+    $loginDirectory = "../../login.php";
+    $logoutDirectory = "../../logout.php";
+    $logoDirectory = "../../images/mgrplogo.png";
+
+    //GNR
+    $patrulhaGNRDirectory = "../gnr/index.php";
     $irpatrulhaDirectory = "../gnr/patrulhar.php";
+    $reportpGNRDirectory = "../gnr/fugitivos.php";
+    $reportvGNRDirectory = "../gnr/veiculos.php";
 }else{
     $indexDiretory = "index.php";
     $loginDirectory = "login.php";
+    //GNR
     $patrulhaGNRDirectory = "system/gnr/index.php";
+    $reportpGNRDirectory = "system/gnr/fugitivos.php";
+    $reportvGNRDirectory = "system/gnr/veiculos.php";
+    $irpatrulhaDirectory = "system/gnr/patrulhar.php";
     $logoutDirectory = "logout.php";
     $logoDirectory = "images/mgrplogo.png";
+    //admin
     $adminPainelDirectory = "system/admin/painel.php";
     $createPatrulhaDirectory = "system/admin/CreateZona.php";
-    $irpatrulhaDirectory = "system/gnr/patrulhar.php";
+
     echo $diretory;
 }
 ?>
@@ -68,9 +90,9 @@ if($diretory == "/mgrp/system/gnr"){
                       GNR Dashboard
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="<?=$irpatrulhaDirectory?>">Patrulhar</a>
                       <a class="dropdown-item" href="<?=$patrulhaGNRDirectory?>">Patrulhas</a>
-                      <a class="dropdown-item" href="#">Report</a>
+                      <a class="dropdown-item" href="<?=$reportpGNRDirectory?>">Fugitivos</a>
+                      <a class="dropdown-item" href="<?=$reportvGNRDirectory?>">Veiculos Procurados</a>
                       <!--<a class="dropdown-item" href="#">Something else here</a>-->
                   </div>
               </div>

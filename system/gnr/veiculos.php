@@ -45,52 +45,59 @@ $userIdLogado = $_SESSION["userId"];
 
 <!-- Page Content -->
 <div class="container">
-    <h2>Patrulhas</h2>
-    <a href="patrulhar.php" class="btn btn-success" type="button" >
-        Criar Patrulha
+    <h2>Veiculos Procurado</h2>
+    <a href="reportv.php" class="btn btn-success" type="button" >
+        Adicionar Veiculo
     </a>
+    <br/>
     <table class="table table-dark table-hover">
         <thead>
         <tr>
             <th class="col-md-1">ID</th>
-            <th class="col-md-2">Polícia nº1</th>
-            <th class="col-md-2">Polícia nº2</th>
-            <th class="col-md-3">Zona</th>
-            <th class="col-md-1">Estado</th>
-            <th class="col-md-4">Ultima Modificação</th>
+            <th class="col-md-2">Tipo De Veículo</th>
+            <th class="col-md-1">Marca</th>
+            <th class="col-md-1">Cor</th>
+            <th class="col-md-1">Proprietário</th>
+            <th class="col-md-1">Local Ultima Vez Visto</th>
+            <th class="col-md-3">Motivo</th>
+            <th class="col-md-2">Policia Serviço</th>
+            <th class="col-md-2">Estado</th>
             <th class="col-md-2">Opções</th>
         </tr>
         </thead>
         <tbody>
         <?php
-        $sql = "SELECT * FROM patrulhas ORDER BY last_modification DESC";
+        $sql = "SELECT * FROM reportv ORDER BY id DESC";
         $users_result = $users->query($sql);
         $users_result_num_rows = $users_result->num_rows;
         if($users_result_num_rows > 0){
             while ($row = $users_result->fetch_assoc()){
-                $patrulhaID = $row["id"];
-                $policia1 = $row["policia"];
-                $policia2 = $row["policia2"];
-                $zona = $patrulha->GetZona($row["zona"]);
-                if($row["status"] == 0)
-                    $estado = "Inativa";
-                else
-                    $estado = "Ativa";
-
-                $ultima_modificacao = $row["last_modification"];
+                $ID = $row["id"];
+                $tipo_veiculo= $row["tipo_veiculo"];
+                $marca = $row["marca"];
+                $cor = $row["cor"];
+                $policia_servico = $users->GetUsername($row["policia_servico"]);
+                $proprietario= $row["proprietario"];
+                $motivo = $row["motivo"];
+                $localultimavezvisto = $row["localultimavezvisto"];
+                $status = $row["status"];
+                $status = $patrulha->GetStatus($status);
                 ?>
                 <tr>
 
-                    <td>33-<?= $patrulhaID?></td>
-                    <td><?= $policia1?></td>
-                    <td><?= $policia2?></td>
-                    <td><?= $zona?></td>
-                    <td <?=$patrulha->SetColor($estado);?> ><?= $estado?></td>
-                    <td><?= $ultima_modificacao?></td>
-                    <th><?php if($users->GetUsername($userIdLogado) == $policia1 ){?><a class="btn btn-secondary" href="atualizarp.php?id=<?=$patrulhaID?>" target="_blank">Atualizar Patrulha</a><?php }if($users->GetUsername($userIdLogado) == $policia2){?>&nbsp<br/><a class="btn btn-danger" href="sairp.php?id=<?=$patrulhaID?>">Sair da Patrulha</a><?php }?></th>
+                    <td><?= $ID?></td>
+                    <td><?= $tipo_veiculo?></td>
+                    <td><?= $marca?></td>
+                    <td><?= $cor?></td>
+                    <td><?= $proprietario?></td>
+                    <td><?= $localultimavezvisto?></td>
+                    <td><?= $motivo?></td>
+                    <td><?= $policia_servico?></td>
+                    <td <?=$patrulha->SetColor($status);?> ><?= $status?></td>
+                    <th><a class="btn btn-secondary" href="atualizarv.php?id=<?=$ID?>" target="_blank">Atualizar</a></th>
                 </tr>
             <?php }}else{
-            echo "Nenhuma patrulha adicionada!";
+            echo "Nenhum carro adicionado!";
         }?>
         </tbody>
     </table>
