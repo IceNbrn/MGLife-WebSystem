@@ -6,6 +6,16 @@ session_start();
 require_once ("../../system/classes/patrulha.php");
 require_once ("../../system/classes/users.php");
 $patrulha = new patrulha();
+$users = new users();
+
+if($users->IsLogged($_SESSION["userId"])){
+    $userIdLogado = $_SESSION["userId"];
+    if($users->GetAdminLvl(0,$userIdLogado) == 0){
+        header("Location: ../../logout.php");
+    }
+}else{
+    header("Location: ../../login.php");
+}
 ?>
 
 <head>
@@ -43,7 +53,7 @@ $patrulha = new patrulha();
 <!-- Page Content -->
 <div class="row">
     <div class="container">
-        <h2>Criar Patrulha</h2>
+        <h2>Criar Zona</h2>
         <form action="CreateZona.php" method="post" autocomplete="false">
             <div class="form-group">
                 <label for="lb_c_zona">Zona</label>

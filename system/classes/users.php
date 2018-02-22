@@ -83,14 +83,32 @@ class users extends database{
         //echo $sql;
         echo  '<script> swal("Sucesso", "Utilizador editado com sucesso!", "success")</script>';
     }
-    public function GetCopLvl($steamid){
-        $sql = "SELECT * FROM players WHERE pid = $steamid";
+    public function GetCopLvl($steamid,$id = null){
+        if($id == null)
+            $sql = "SELECT * FROM players WHERE pid = $steamid";
+        else
+            $sql = "SELECT * FROM players INNER JOIN users ON users.steamid = players.pid WHERE id = $id";
         $result = $this->query($sql);
 
         $num_rows = $result->num_rows;
         if($num_rows > 0){
             while ($row = $result->fetch_assoc()){
                 return $row["coplevel"];
+            }
+        }
+        return 0;
+    }
+    public function GetAdminLvl($steamid,$id = null){
+        if($id == null)
+            $sql = "SELECT * FROM players WHERE pid = $steamid";
+        else
+            $sql = "SELECT * FROM players INNER JOIN users ON users.steamid = players.pid WHERE id = $id";
+        $result = $this->query($sql);
+
+        $num_rows = $result->num_rows;
+        if($num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+                return $row["adminlevel"];
             }
         }
         return 0;
@@ -110,4 +128,11 @@ class users extends database{
     public function GetUsernameSession($id){
         echo $this->GetUsername($id);
     }
+    public function IsLogged($id) : bool {
+        if(isset($id)){
+            return true;
+        }
+        return false;
+    }
+
 }

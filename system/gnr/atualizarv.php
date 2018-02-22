@@ -8,6 +8,16 @@ require_once ("../../system/classes/users.php");
 $users = new users();
 $patrulha = new patrulha();
 
+if($users->IsLogged($_SESSION["userId"])){
+    $userIdLogado = $_SESSION["userId"];
+    if($users->GetCopLvl(0,$userIdLogado) == 0){
+        header("Location: ../../logout.php");
+    }
+}else{
+    header("Location: ../../login.php");
+}
+
+
 if(isset($_GET["id"])){
     $Id = $users->quote($_GET["id"]);
 

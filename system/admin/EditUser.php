@@ -6,6 +6,15 @@ session_start();
 require_once ("../../system/classes/users.php");
 $users = new users();
 
+if($users->IsLogged($_SESSION["userId"])){
+    $userIdLogado = $_SESSION["userId"];
+    if($users->GetAdminLvl(0,$userIdLogado) == 0){
+        header("Location: ../../logout.php");
+    }
+}else{
+    header("Location: ../../login.php");
+}
+
 if(isset($_GET["id"])){
     $userId = $users->quote($_GET["id"]);
 

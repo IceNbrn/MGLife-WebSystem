@@ -9,7 +9,15 @@ require_once ("../../system/classes/users.php");
 $users = new users();
 $patrulha = new patrulha();
 
-$userIdLogado = $_SESSION["userId"];
+if($users->IsLogged($_SESSION["userId"])){
+    $userIdLogado = $_SESSION["userId"];
+    if($users->GetCopLvl(0,$userIdLogado) == 0){
+        header("Location: ../../logout.php");
+    }
+}else{
+    header("Location: ../../login.php");
+}
+
 ?>
 
 <head>

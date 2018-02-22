@@ -44,14 +44,37 @@ $users = new users();
         </div>
     </header>
     <!-- Page Content -->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-            <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
-            <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
-            <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-5 box-shadow">
+                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="images/gnr.jpg" data-holder-rendered="true">
+                        <div class="card-body">
+                            <h3 class="card-text text-center">GNR</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="images/tap.jpg" data-holder-rendered="true">
+                        <div class="card-body">
+                            <h3 class="card-text text-center">TAP</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="images/inem.jpg" data-holder-rendered="true">
+                        <div class="card-body">
+                            <h3 class="card-text text-center">BOMBEIROS</h3>
+                        </div>
+                    </div>
+                </div>
+
+
         </div>
-      </div>
     </div>
 
     <!-- Bootstrap core JavaScript -->

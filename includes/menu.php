@@ -13,6 +13,7 @@ $diretory = str_replace("/".$filename,"",str_replace("/OpenYourGame/","",$_SERVE
 if($diretory == "/mgrp/system/gnr"){
     $indexDiretory = "../../index.php";
     $loginDirectory = "../../login.php";
+    $sobreDirectory = "../../sobre.php";
 
     $logoutDirectory = "../../logout.php";
     $logoDirectory = "../../images/mgrplogo.png";
@@ -29,6 +30,7 @@ if($diretory == "/mgrp/system/gnr"){
     $indexDiretory = "index.php";
     $loginDirectory = "login.php";
     $logoutDirectory = "logout.php";
+    $sobreDirectory = "sobre.php";
 
     $logoDirectory = "images/mgrplogo.png";
     //ADMIN
@@ -48,6 +50,7 @@ if($diretory == "/mgrp/system/gnr"){
     $loginDirectory = "../../login.php";
     $logoutDirectory = "../../logout.php";
     $logoDirectory = "../../images/mgrplogo.png";
+    $sobreDirectory = "../../sobre.php";
 
     //GNR
     $patrulhaGNRDirectory = "../gnr/index.php";
@@ -57,6 +60,7 @@ if($diretory == "/mgrp/system/gnr"){
 }else{
     $indexDiretory = "index.php";
     $loginDirectory = "login.php";
+    $sobreDirectory = "sobre.php";
     //GNR
     $patrulhaGNRDirectory = "system/gnr/index.php";
     $reportpGNRDirectory = "system/gnr/fugitivos.php";
@@ -104,16 +108,16 @@ if($diretory == "/mgrp/system/gnr"){
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item" href="<?=$adminPainelDirectory?>">Painel</a>
-                      <a class="dropdown-item" href="<?=$createPatrulhaDirectory?>">Nova Patrulha</a>
+                      <a class="dropdown-item" href="<?=$createPatrulhaDirectory?>">Nova Zona</a>
                       <!--<a class="dropdown-item" href="#">Something else here</a>-->
                   </div>
               </div>
           <?php }?>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">About</a>
+              <a class="nav-link" href="<?=$sobreDirectory?>">Sobre</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#"> sad</a>

@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt">
 <?php
-
+//TODO: CHECK IF SESSION IS SET AND IF IS GNR
 ob_start();
 session_start();
+
+
 require_once ("../../system/classes/patrulha.php");
 require_once ("../../system/classes/users.php");
 $users = new users();
 $patrulha = new patrulha();
 
-$userIdLogado = $_SESSION["userId"];
+if($users->IsLogged($_SESSION["userId"])){
+    $userIdLogado = $_SESSION["userId"];
+    if($users->GetCopLvl(0,$userIdLogado) == 0){
+        header("Location: ../../logout.php");
+    }
+}else{
+    header("Location: ../../login.php");
+}
+
+
 ?>
 
 <head>
