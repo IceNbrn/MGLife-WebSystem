@@ -98,6 +98,21 @@ class users extends database{
         }
         return 0;
     }
+    public function GetBombeiroLvl($steamid,$id = null){
+        if($id == null)
+            $sql = "SELECT * FROM players WHERE pid = $steamid";
+        else
+            $sql = "SELECT * FROM players INNER JOIN users ON users.steamid = players.pid WHERE id = $id";
+        $result = $this->query($sql);
+
+        $num_rows = $result->num_rows;
+        if($num_rows > 0){
+            while ($row = $result->fetch_assoc()){
+                return $row["coplevel"];
+            }
+        }
+        return 0;
+    }
     public function GetAdminLvl($steamid,$id = null){
         if($id == null)
             $sql = "SELECT * FROM players WHERE pid = $steamid";

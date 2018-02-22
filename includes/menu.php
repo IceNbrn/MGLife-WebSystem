@@ -25,6 +25,8 @@ if($diretory == "/mgrp/system/gnr"){
     $irpatrulhaDirectory = "patrulhar.php";
     $reportpGNRDirectory = "fugitivos.php";
     $reportvGNRDirectory = "veiculos.php";
+    $pacientesDirectory = "../bombeiros/index.php";
+    $novopacienteDirectory = "../bombeiros/novopaciente.php";
 }elseif($diretory == "/mgrp") {
     //HOME
     $indexDiretory = "index.php";
@@ -41,10 +43,35 @@ if($diretory == "/mgrp/system/gnr"){
     $reportvGNRDirectory = "system/gnr/veiculos.php";
     $irpatrulhaDirectory = "system/gnr/patrulhar.php";
     $patrulhaGNRDirectory = "system/gnr/index.php";
+    //BOMBEIROS
+    $pacientesDirectory = "system/bombeiros/index.php";
+    $novopacienteDirectory = "system/bombeiros/novopaciente.php";
 }elseif($diretory == "/mgrp/system/admin"){
     //ADMIN
     $adminPainelDirectory = "painel.php";
     $createPatrulhaDirectory = "CreateZona.php";
+    //HOME
+    $indexDiretory = "../../index.php";
+    $loginDirectory = "../../login.php";
+    $logoutDirectory = "../../logout.php";
+    $logoDirectory = "../../images/mgrplogo.png";
+    $sobreDirectory = "../../sobre.php";
+
+    //GNR
+    $patrulhaGNRDirectory = "../gnr/index.php";
+    $irpatrulhaDirectory = "../gnr/patrulhar.php";
+    $reportpGNRDirectory = "../gnr/fugitivos.php";
+    $reportvGNRDirectory = "../gnr/veiculos.php";
+    //BOMBEIROS
+    $pacientesDirectory = "../bombeiros/index.php";
+    $novopacienteDirectory = "../bombeiros/novopaciente.php";
+}elseif($diretory == "/mgrp/system/bombeiros"){
+    //BOMBEIROS
+    $pacientesDirectory = "index.php";
+    $novopacienteDirectory = "novopaciente.php";
+    //ADMIN
+    $adminPainelDirectory = "../admin/painel.php";
+    $createPatrulhaDirectory = "../admin/CreateZona.php";
     //HOME
     $indexDiretory = "../../index.php";
     $loginDirectory = "../../login.php";
@@ -71,6 +98,9 @@ if($diretory == "/mgrp/system/gnr"){
     //admin
     $adminPainelDirectory = "system/admin/painel.php";
     $createPatrulhaDirectory = "system/admin/CreateZona.php";
+    //BOMBEIROS
+    $pacientesDirectory = "system/bombeiros/index.php";
+    $novopacienteDirectory = "system/bombeiros/novopaciente.php";
 
     echo $diretory;
 }
@@ -102,6 +132,19 @@ if($diretory == "/mgrp/system/gnr"){
               </div>
               <?php }?>
               &nbsp
+              <?php if($users->GetBombeiroLvl($users->GetUserSteamid($_SESSION["userId"])) > 0){ ?>
+                  <div class="dropdown">
+                      <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Bombeiros Dashboard
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="<?=$pacientesDirectory?>">Pacientes</a>
+                          <!--<a class="dropdown-item" href="#">Something else here</a>-->
+                      </div>
+                  </div>
+              <?php }?>
+              &nbsp
+              <?php if($users->GetAdminLvl($users->GetUserSteamid($_SESSION["userId"])) > 0){ ?>
               <div class="dropdown">
                   <button class="btn btn-basic dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Admin Dashboard
@@ -112,6 +155,7 @@ if($diretory == "/mgrp/system/gnr"){
                       <!--<a class="dropdown-item" href="#">Something else here</a>-->
                   </div>
               </div>
+              <?php }?>
           <?php }?>
             <li class="nav-item">
               <a class="nav-link" href="index.php">Home</a>
