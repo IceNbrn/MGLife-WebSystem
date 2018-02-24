@@ -58,9 +58,9 @@ if($users->IsLogged($_SESSION["userId"])){
 
 <!-- Page Content -->
 <div class="container">
-    <h2>Patrulhas</h2>
-    <a href="patrulhar.php" class="btn btn-success" type="button" >
-        Criar Patrulha
+    <h2>Pacientes</h2>
+    <a href="novopaciente.php" class="btn btn-success" type="button" >
+        Novo Paciente
     </a>
     <table class="table table-dark table-hover">
         <thead>
@@ -105,7 +105,7 @@ if($users->IsLogged($_SESSION["userId"])){
 <!-- Bootstrap core JavaScript -->
 <script src="../../vendor/jquery/jquery.min.js"></script>
 <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<?=require_once ("includes/footer.php")?>
 </body>
 
 </html>

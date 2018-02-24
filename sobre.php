@@ -48,12 +48,11 @@ $users = new users();
       <div class="row">
         <div class="col-lg-12 text-center">
             <h1 class="mt-5">Sobre</h1>
-            <p>O MegaGeneration ..........................................
-                ............................................................
-                ............................................................
-                ............................................................
-                ............................................................
-                ............................................................</p>
+            <p>A comunidade Mega Generation foi criada em Novembro de 2017
+                para dar aos jogadores de arma 3 portugueses a oportunidade
+                de se divertirem em um servidor baseado em Portugal, e
+                tambem para impulsionar o modo de jogo baseado na vida real
+                ou seja o roleplay</p>
         </div>
       </div>
     </div>

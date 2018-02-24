@@ -110,7 +110,7 @@ if($diretory == "/mgrp/system/gnr"){
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
           <img src="<?=$logoDirectory?>" width="32px" height="32px">
-        <a class="navbar-brand" href="<?=$indexDiretory?>">MGLife System</a>
+        <a class="navbar-brand" href="<?=$indexDiretory?>">MGLife</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -162,9 +162,6 @@ if($diretory == "/mgrp/system/gnr"){
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?=$sobreDirectory?>">Sobre</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"> sad</a>
             </li>
           <div class="dropdown">
               <?php

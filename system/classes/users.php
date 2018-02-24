@@ -47,7 +47,7 @@ class users extends database{
         }
     }
     public function Register($steamid,$password){
-        $sql0 = "SELECT * FROM users WHERE $steamid = '$steamid'";
+        $sql0 = "SELECT * FROM users WHERE steamid = '$steamid'";
         $result = $this->query($sql0);
         $num_rows = $result->num_rows;
         if($num_rows == 0){
@@ -55,19 +55,21 @@ class users extends database{
             $resultgame = $this->query($sqlgame);
             $num_rowsgame = $resultgame->num_rows;
             if($num_rowsgame > 0){
-                $userData = $result->fetch_array();
-                $username = $userData["name"];
-                $sql = "INSERT INTO users (username,password,deleted,steamid) VALUES ('$username','$password',0,'$steamid')";
-                $this->query($sql);
-                //echo $sql;
-                echo  '<script> swal("Sucesso", "Utilizador registado com sucesso!", "success")</script>';
+                while ($row = $resultgame->fetch_assoc()){
+                    $username = $row["name"];
+                    $sql = "INSERT INTO users (username,password,deleted,steamid) VALUES ('$username','$password',0,'$steamid')";
+                    $this->query($sql);
+                    echo  '<script> swal("Sucesso", "Utilizador registado com sucesso!", "success")</script>';
+                }
+
             }else{
                 echo "<script>swal('Erro', 'Tens de entrar no servidor primeiro antes de registares no site!', 'error');</script>";
             }
 
 
         }else{
-            echo "<script>swal('Erro', 'Esse steamid já está a ser utilizado por alguém!', 'error');</script>";
+            echo $sql0;
+            //echo "<script>swal('Erro', 'Esse steamid já está a ser utilizado por alguém!', 'error');</script>";
         }
 
     }
